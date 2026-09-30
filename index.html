@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>To You</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0e12;--ink:#f3ead8;--gold:#d8b26a;--soft:#b6a98f;--card:rgba(255,255,255,.05);box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#faf6ee;--ink:#2c261c;--gold:#a9762f;--soft:#6b5e46;--card:rgba(0,0,0,.04)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+#petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.p{position:absolute;top:-30px;opacity:.85;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) translateX(var(--dx)) rotate(var(--r));opacity:0}}
+#gate{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--bg);transition:opacity 1s ease,visibility 1s}
+#gate.hide{opacity:0;visibility:hidden}
+.env{font-size:70px;cursor:pointer;animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.envtext{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--gold);margin-top:16px}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:70px 24px 40px;opacity:0;transition:opacity 1.2s ease}
+main.show{opacity:1}
+.title{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,9vw,4rem);color:var(--gold);text-align:center;margin:0 0 6px}
+.tagline{text-align:center;color:var(--soft);font-style:italic;margin-bottom:50px;font-size:1.15rem}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.rv.show{opacity:1;transform:none}
+.stanza{border-left:2px solid var(--gold);padding-left:20px;margin:0 0 34px}
+.stanza h3{font-family:'Dancing Script',cursive;color:var(--gold);font-size:1.6rem;margin:0 0 8px}
+.stanza p{font-size:1.18rem;line-height:1.8;margin:0}
+.divider{text-align:center;color:var(--gold);margin:36px 0;font-size:1.3rem;letter-spacing:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px}
+.chip{border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:8px 16px;font-size:.95rem;font-style:italic}
+.seal{text-align:center;margin-top:10px}
+.seal button{background:none;border:2px solid var(--gold);color:var(--gold);font-family:'Dancing Script',cursive;font-size:1.3rem;padding:14px 34px;border-radius:999px;cursor:pointer;transition:background .4s,color .4s}
+.seal button:hover{background:var(--gold);color:var(--bg)}
+#reply{opacity:0;max-height:0;overflow:hidden;transition:opacity 1s,max-height 1s;font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--gold);margin-top:20px}
+#reply.show{opacity:1;max-height:200px}
+.sig{text-align:right;font-family:'Dancing Script',cursive;font-size:1.8rem;color:var(--gold);margin-top:40px}
+footer{position:relative;z-index:1;text-align:center;color:var(--soft);padding:40px;font-style:italic}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}main{opacity:1}}
+</style>
+</head>
+<body>
+<div id="petals"></div>
+
+<div id="gate">
+  <div class="env" id="envBtn">💌</div>
+  <div class="envtext">tap to open my letter</div>
+</div>
+
+<main id="main">
+  <div class="title">To You</div>
+  <div class="tagline">every word here is true</div>
+
+  <div class="stanza rv">
+    <h3>My dearest</h3>
+    <p>I love you more than anything in this world — more than my work, more than every plan I've made. You are my closest person, and nothing else comes close.</p>
+  </div>
+
+  <div class="stanza rv">
+    <h3>I'm sorry</h3>
+    <p>I made you angry, and I hurt you. I'm truly sorry for that. You have every right to feel the way you feel, and I don't want to make excuses.</p>
+  </div>
+
+  <div class="stanza rv">
+    <h3>I'm listening</h3>
+    <p>I want to understand how you feel, truly. I know I made it worse before, but I'm here now, and I'm not going anywhere.</p>
+  </div>
+
+  <div class="divider">❧</div>
+
+  <div class="chips rv">
+    <span class="chip">always here for you</span>
+    <span class="chip">yours, always</span>
+    <span class="chip">missing your smile</span>
+    <span class="chip">trying to be better</span>
+  </div>
+
+  <div class="stanza rv">
+    <h3>Come back to us</h3>
+    <p>I miss the way we were. I'm begging you, from my heart, let's find our way back to that — be the same as before, and I promise to try harder every single day.</p>
+  </div>
+
+  <div class="sig rv">forever yours</div>
+
+  <div class="seal rv">
+    <button id="btn">seal it with forgiveness 🤍</button>
+    <div id="reply">Thank you, my love. I forgive you. ❤️</div>
+  </div>
+</main>
+
+<footer>written with everything I have, only for you</footer>
+
+<script>
+var pet=['🌸','🌹','🤍','❀'];
+function fall(n){var box=document.getElementById('petals');for(var i=0;i<n;i++){var s=document.createElement('span');s.className='p';s.textContent=pet[Math.floor(Math.random()*pet.length)];s.style.left=Math.random()*100+'%';s.style.fontSize=(14+Math.random()*20)+'px';s.style.setProperty('--dx',(Math.random()*100-50)+'px');s.style.setProperty('--r',(Math.random()*180-90)+'deg');s.style.animationDuration=(8+Math.random()*8)+'s';box.appendChild(s);(function(e){setTimeout(function(){e.remove()},18000)})(s)}}
+setInterval(function(){fall(1)},1200);fall(5);
+
+document.getElementById('envBtn').addEventListener('click',function(){
+  document.getElementById('gate').classList.add('hide');
+  document.getElementById('main').classList.add('show');
+  setTimeout(function(){
+    document.querySelectorAll('.rv').forEach(function(el,idx){
+      setTimeout(function(){el.classList.add('show')},idx*220);
+    });
+  },300);
+});
+
+document.getElementById('btn').addEventListener('click',function(){
+  fall(30);
+  document.getElementById('reply').classList.add('show');
+  var b=this;b.style.transition='opacity .6s';b.style.opacity=0;
+  setTimeout(function(){b.style.display='none'},600);
+});
+</script>
+</body>
+</html>
